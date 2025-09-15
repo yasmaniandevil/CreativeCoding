@@ -7,10 +7,12 @@ public class Movement : MonoBehaviour
     public float moveSpeed;
     public float lookSpeed;
 
+    public Camera _camera;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _camera = GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -30,10 +32,11 @@ public class Movement : MonoBehaviour
         float z = Input.GetAxis("Vertical"); //assigns w/s key and up and down arrow
         //no y because we move left to right(x) and forward to back(z)
 
+
         //make a new variable called y bc that is our up and down
         float y = 0;
         //press E to go up positive direction
-        if (Input.GetKey(KeyCode.E))
+        /*if (Input.GetKey(KeyCode.E))
         {
             y = 1;
         }
@@ -42,7 +45,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.F))
         {
             y = -1;
-        }
+        }*/
 
         //combine the x, y, z into one direction vector
         Vector3 move = new Vector3(x, y, z);
