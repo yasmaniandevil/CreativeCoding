@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FPSRBPlayer : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class FPSRBPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //SpawnObjects();
+        
         rb = GetComponent<Rigidbody>();
 
         //we lock cursor to middle of screen
@@ -63,19 +66,11 @@ public class FPSRBPlayer : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
-
-        
-        if (isRunning)
-        {
             currentSpeed = runningSpeed;
         }
         else
         {
+            isRunning = false;
             currentSpeed = walkSpeed;
         }
 
@@ -88,6 +83,12 @@ public class FPSRBPlayer : MonoBehaviour
         }
 
         Death();
+
+        //restart button
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void CameraLook()
@@ -113,25 +114,40 @@ public class FPSRBPlayer : MonoBehaviour
 
     }
 
+    //think of it as a report
+    //when we hit an object
+    //unity will store what object we hit in our collision var
+    //then it passes it in to our method
+    //games rely on collisions and triggers
+    //for a collision or trigger to happen both obj need a collider and one needs a rigidbody
     private void OnCollisionEnter(Collision collision)
     {
-
+        //first do normal collision without tag
+        Debug.Log("I Hit: " + collision.gameObject.name);
+        
+        //what if we want to collide with a specific game object
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("hit the obstacle");
+            Debug.Log("I Hit: " + collision.gameObject.name);
             
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //first do normal trigger
+        Debug.Log("I Triggered: " + other.gameObject.name);
+        
+        //but what if we want to trigger a specifc game obj
         if (other.CompareTag("Trigger"))
         {
-            Debug.Log("hit the trigger");
+            Debug.Log("I Triggered: " + other.gameObject.name);
             SpawnObjects();
-
+            
+            //if the score script exists
             if(scoreScript != null)
             {
+                //call the function add score
                 scoreScript.AddScore(1);
 
             }
@@ -158,6 +174,7 @@ public class FPSRBPlayer : MonoBehaviour
             //if it exists
             if(respawnPoint != null)
             {
+                //transform.position means the transform of the gameobject the script is on
                 transform.position = respawnPoint.position;
 
             }

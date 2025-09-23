@@ -24,7 +24,6 @@ public class Spawner : MonoBehaviour
     public void SpawnObjectsList()
     {
         
-        
         for (int i = 0; i < listOfPrefabs.Count; i++)
         {
             //choose a random prefab from the list

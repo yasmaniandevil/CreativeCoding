@@ -19,6 +19,8 @@ public class UILoadScreen : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        //SceneManager.LoadScene(sceneName);
+        // OR
+        SceneManager.LoadScene(0);
     }
 }

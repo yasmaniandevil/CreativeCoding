@@ -73,4 +73,6 @@ public class ObjectMover : MonoBehaviour
         //final position is the start plus the offset
         transform.position = startPos + offset;
     }
+
+    
 }
