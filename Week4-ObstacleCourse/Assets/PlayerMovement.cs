@@ -31,7 +31,11 @@ public class PlayerMovement : MonoBehaviour
     //what prefab are we spawning
     public GameObject obstaclePrefab;
 
-    
+    //we are making a reference to our score script so we can call our function
+    public Score scoreScript;
+
+    //this is going to be an empty game object with a transform that places our player here
+    public Transform respawnPoint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         //when player starts game current speed is the walk speed
         currentSpeed = walkSpeed;
 
-        SpawnObjects();
+        //SpawnObjects();
     }
 
     // Update is called once per frame
@@ -94,7 +98,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Debug.Log("Current Speed is: " + currentSpeed);
-
+        //if our player falls we call our respawn function that resets the position of the player
+        if(transform.position.y < -8)
+        {
+            Respawn();
+        }
 
     }
 
@@ -135,5 +143,42 @@ public class PlayerMovement : MonoBehaviour
             Vector3 position = new Vector3(i * spacing, 1.5f, 0);
             Instantiate(spherePrefab, position, Quaternion.identity);
         }
+    }
+
+    //two objects hit each other in unity
+    //unity then makes a report and tells you what obj you hit
+    //by saving it in the collision variable
+    //for a collision or trigger to happen BOTH objects need a box collider
+    //and one of them needs a rigidbody
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("I Hit: " + collision.gameObject.name);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("I Triggered: " + other.gameObject.name);
+
+        //if the other game object i hit has the tag trigger on it
+        if(other.CompareTag("Trigger"))
+        {
+            Debug.Log("found trigger");
+            SpawnObjects();
+            //we first accessed the script then we called the function
+            scoreScript.AddScore(1);
+            
+        }
+
+        Destroy(other.gameObject);
+    }
+
+    //we call this function if our player falls
+    private void Respawn()
+    {
+        //the transform.position references the transform this scipt is on
+        //the script is on the player so its the position of the player
+        //we are setting the players position to the respawn position
+        transform.position = respawnPoint.position;
+
     }
 }
