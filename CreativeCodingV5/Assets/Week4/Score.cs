@@ -35,7 +35,7 @@ public class Score : MonoBehaviour
         //if time reachers 0 or below clamp it and show time over
         if (timerTime <= 0f)
         {
-            Debug.Log("Time over");
+            //Debug.Log("Time over");
             timerTime = 0f;
             timerText.text = "Game Over";
         }
