@@ -37,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
     //this is going to be an empty game object with a transform that places our player here
     public Transform respawnPoint;
 
+    //audio source variable to grab audio
+    public AudioSource _SFX;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = walkSpeed;
 
         //SpawnObjects();
+        
     }
 
     // Update is called once per frame
@@ -157,6 +161,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("sfx1"))
+        {
+            Debug.Log("hit sfx trigger");
+            _SFX.Play();
+            Debug.Log("play audio");
+        }
+
         Debug.Log("I Triggered: " + other.gameObject.name);
 
         //if the other game object i hit has the tag trigger on it
@@ -166,10 +177,9 @@ public class PlayerMovement : MonoBehaviour
             SpawnObjects();
             //we first accessed the script then we called the function
             scoreScript.AddScore(1);
-            
         }
 
-        Destroy(other.gameObject);
+        //Destroy(other.gameObject);
     }
 
     //we call this function if our player falls
