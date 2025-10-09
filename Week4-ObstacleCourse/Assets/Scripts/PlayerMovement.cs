@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -39,6 +40,12 @@ public class PlayerMovement : MonoBehaviour
 
     //audio source variable to grab audio
     public AudioSource _SFX;
+    
+
+    public int maxJumps = 5;
+    private int jumpCount;
+    public bool isGrounded;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = walkSpeed;
 
         //SpawnObjects();
+
+        jumpCount = 0;
         
     }
 
@@ -69,10 +78,13 @@ public class PlayerMovement : MonoBehaviour
 
         CameraLook();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             Debug.Log("jump");
+            jumpCount++;
+           
         }
 
         //if we press the shift key
@@ -157,6 +169,21 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("I Hit: " + collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            jumpCount = 0;
+            
+        }
+        
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+        jumpCount = 0;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -171,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("I Triggered: " + other.gameObject.name);
 
         //if the other game object i hit has the tag trigger on it
-        if(other.CompareTag("Trigger"))
+        if (other.CompareTag("Trigger"))
         {
             Debug.Log("found trigger");
             SpawnObjects();

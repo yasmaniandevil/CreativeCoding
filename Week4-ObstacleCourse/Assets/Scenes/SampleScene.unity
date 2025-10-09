@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 79278828}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -919,7 +919,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5923386518480255635, guid: 50a706dbbefaf44a09aa948f2cbe2c36, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 3abc7fd1aaffe4c5eb617c5f3d8a255e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1427,6 +1427,8 @@ MonoBehaviour:
   scoreScript: {fileID: 990349236}
   respawnPoint: {fileID: 1935229993}
   _SFX: {fileID: 1766984687}
+  maxJumps: 2
+  isGrounded: 0
 --- !u!1 &1766984682
 GameObject:
   m_ObjectHideFlags: 0
