@@ -8,10 +8,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2864361570868668085, guid: 2cb5be4e3a8154b22a9fac527cb1a16d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5723296921058013018, guid: 2cb5be4e3a8154b22a9fac527cb1a16d,
         type: 3}
       propertyPath: m_Name
       value: blueCube Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723296921058013018, guid: 2cb5be4e3a8154b22a9fac527cb1a16d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Trigger
       objectReference: {fileID: 0}
     - target: {fileID: 5974636760047844309, guid: 2cb5be4e3a8154b22a9fac527cb1a16d,
         type: 3}

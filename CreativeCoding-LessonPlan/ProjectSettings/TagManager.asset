@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Trigger
   - audio
+  - Ground
   layers:
   - Default
   - TransparentFX
