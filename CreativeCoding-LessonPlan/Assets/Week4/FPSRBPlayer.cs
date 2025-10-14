@@ -149,7 +149,7 @@ public class FPSRBPlayer : MonoBehaviour
             }
         }
         
-        Debug.Log(hasPlayed);
+        
         //first do normal trigger
         Debug.Log("I Triggered: " + other.gameObject.name);
         
@@ -157,7 +157,7 @@ public class FPSRBPlayer : MonoBehaviour
         if (other.CompareTag("Trigger"))
         {
             Debug.Log("I Triggered: " + other.gameObject.name);
-            SpawnObjects();
+            //SpawnObjects();
             
             //if the score script exists
             if(scoreScript != null)
