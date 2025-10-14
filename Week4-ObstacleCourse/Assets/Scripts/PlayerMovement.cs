@@ -46,27 +46,31 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount;
     public bool isGrounded;
 
+    private Animator _animationClip;
+    public GameObject animationObj;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
         //when player starts game current speed is the walk speed
         currentSpeed = walkSpeed;
-
         //SpawnObjects();
-
         jumpCount = 0;
-        
+        _animationClip = animationObj.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.C))
+        {
+            _animationClip.SetTrigger("PlayCylinders");
+            Debug.Log("played animation");
+        }
         //this is unitys input system
         //horizontal is mapped to the left and right arrow keys and a/d
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -206,7 +210,11 @@ public class PlayerMovement : MonoBehaviour
             scoreScript.AddScore(1);
         }
 
-        //Destroy(other.gameObject);
+        if (other.CompareTag("PlayAnimation"))
+        {
+            _animationClip.SetTrigger("PlayCylinders");
+            Debug.Log("triggered animation");
+        }
     }
 
     //we call this function if our player falls
