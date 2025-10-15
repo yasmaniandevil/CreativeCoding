@@ -17,17 +17,11 @@ public class FPSRBPlayer : MonoBehaviour
     private float xRotation = 0;
 
     float currentSpeed;
-    public bool isRunning;
     public float runningSpeed;
     public float jumpForce = 5f;
 
     //script reference
     public Score scoreScript;
-
-    //spawning var
-    public int numberOfObstacles = 10;
-    private float spacing = 3f;
-    public GameObject obstaclePrefab;
 
     //respawn point
     public Transform respawnPoint;
@@ -38,8 +32,6 @@ public class FPSRBPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SpawnObjects();
-        
         rb = GetComponent<Rigidbody>();
 
         //we lock cursor to middle of screen
@@ -66,16 +58,7 @@ public class FPSRBPlayer : MonoBehaviour
 
         CameraLook();
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            isRunning = true;
-            currentSpeed = runningSpeed;
-        }
-        else
-        {
-            isRunning = false;
-            currentSpeed = walkSpeed;
-        }
+        Sprint();
 
         //Debug.Log("current speed is: " + currentSpeed);
 
@@ -86,12 +69,7 @@ public class FPSRBPlayer : MonoBehaviour
         }
 
         Death();
-
-        //restart button
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        
     }
 
     private void CameraLook()
@@ -117,6 +95,17 @@ public class FPSRBPlayer : MonoBehaviour
 
     }
 
+    private void Sprint()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed = runningSpeed;
+        }
+        else
+        {
+            currentSpeed = walkSpeed;
+        }
+    }
     //think of it as a report
     //when we hit an object
     //unity will store what object we hit in our collision var
@@ -148,8 +137,6 @@ public class FPSRBPlayer : MonoBehaviour
                 _audio.Play();
             }
         }
-        
-        
         //first do normal trigger
         Debug.Log("I Triggered: " + other.gameObject.name);
         
@@ -157,7 +144,7 @@ public class FPSRBPlayer : MonoBehaviour
         if (other.CompareTag("Trigger"))
         {
             Debug.Log("I Triggered: " + other.gameObject.name);
-            //SpawnObjects();
+            
             
             //if the score script exists
             if(scoreScript != null)
@@ -169,17 +156,6 @@ public class FPSRBPlayer : MonoBehaviour
 
             Destroy(other.gameObject);
         }
-
-        
-    }
-
-    public void SpawnObjects()
-    {
-        for (int i = 0; i < numberOfObstacles; i++)
-        {
-            Vector3 position = new Vector3(i * spacing, 1.5f, 0);
-            Instantiate(obstaclePrefab, position, Quaternion.identity);
-        }
     }
 
     public void Death()
@@ -187,13 +163,11 @@ public class FPSRBPlayer : MonoBehaviour
         //if the player falls below y = -5 resets them to the respawn point
         if(transform.position.y < -5)
         {
-            
             //if it exists
             if(respawnPoint != null)
             {
                 //transform.position means the transform of the gameobject the script is on
                 transform.position = respawnPoint.position;
-
             }
             else
             {

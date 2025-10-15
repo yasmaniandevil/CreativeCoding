@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Week2n3 - Still Life/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Week5 - UI/UI-week4.unity
+    path: Assets/Week5 - UI/UI-week5.unity
     guid: 8654a62a42ea2418c9657ef9a3ceb226
+  - enabled: 1
+    path: Assets/Week8/Week8.unity
+    guid: c2ebed1c84ad74e9d9ec1b7b5fbac606
   m_configObjects: {}
