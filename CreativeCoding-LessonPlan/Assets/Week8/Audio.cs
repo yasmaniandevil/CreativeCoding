@@ -8,7 +8,7 @@ public class Audio : MonoBehaviour
     public AudioClip audio;
     private float volume;
     public AudioSource audioSource;
-    private bool hasPlayed = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +23,17 @@ public class Audio : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //if it isnt the player
         if (!other.gameObject.CompareTag("Player")) return;
-        if (hasPlayed) return;
-        
+        //if it is currently playing
+        if (audioSource.isPlaying) return;
+        //if it is the player
         if (other.CompareTag(("Player")))
         {
+            //play the audio
             audioSource.Play();
             Debug.Log("Played Audio");
-            hasPlayed = true;
+            
         }
        
     }

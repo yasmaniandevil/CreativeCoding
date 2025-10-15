@@ -7,11 +7,7 @@
     <list default="true" id="9f59a1a7-5c06-435e-a338-f509876ebdd9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CreativeCoding-LessonPlan/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CreativeCoding-LessonPlan/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Week4/FPSRBPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Week4/FPSRBPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Week4/Week4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Week4/Week4.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Week5 - UI/UI-week4.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Week5 - UI/UI-week4.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Week8/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Week8/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Week8/Audio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Week8/Audio.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +110,7 @@
       <updated>1760380341681</updated>
       <workItem from="1760380343177" duration="393000" />
       <workItem from="1760408979451" duration="2356000" />
-      <workItem from="1760561500189" duration="3462000" />
+      <workItem from="1760561500189" duration="4646000" />
     </task>
     <servers />
   </component>

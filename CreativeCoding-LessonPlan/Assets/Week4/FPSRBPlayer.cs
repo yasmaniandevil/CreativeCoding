@@ -26,8 +26,6 @@ public class FPSRBPlayer : MonoBehaviour
     //respawn point
     public Transform respawnPoint;
 
-    public AudioSource _audio;
-    bool hasPlayed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -128,15 +126,6 @@ public class FPSRBPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //play audio once when triggered
-        if (other.CompareTag(("audio")) && !hasPlayed)
-        {
-            hasPlayed = true;
-            if (hasPlayed)
-            {
-                _audio.Play();
-            }
-        }
         //first do normal trigger
         Debug.Log("I Triggered: " + other.gameObject.name);
         
@@ -144,7 +133,6 @@ public class FPSRBPlayer : MonoBehaviour
         if (other.CompareTag("Trigger"))
         {
             Debug.Log("I Triggered: " + other.gameObject.name);
-            
             
             //if the score script exists
             if(scoreScript != null)
