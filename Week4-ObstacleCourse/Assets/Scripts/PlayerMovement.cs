@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,30 +25,17 @@ public class PlayerMovement : MonoBehaviour
     private float xRotation = 0;
     public GameObject spherePrefab;
 
-    //spawning variables
-    //how many obstacles are spawning
-    public int numberOfObstacles = 10;
-    //how far are the obstacles from each other, their spacing
-    private float spacing = 3f;
-    //what prefab are we spawning
-    public GameObject obstaclePrefab;
-
     //we are making a reference to our score script so we can call our function
     public Score scoreScript;
 
     //this is going to be an empty game object with a transform that places our player here
     public Transform respawnPoint;
 
-    //audio source variable to grab audio
-    public AudioSource _SFX;
-    
-
     public int maxJumps = 5;
     private int jumpCount;
     public bool isGrounded;
 
-    private Animator _animationClip;
-    public GameObject animationObj;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -58,19 +46,15 @@ public class PlayerMovement : MonoBehaviour
         Cursor.visible = false;
         //when player starts game current speed is the walk speed
         currentSpeed = walkSpeed;
-        //SpawnObjects();
+        
         jumpCount = 0;
-        _animationClip = animationObj.GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.C))
-        {
-            _animationClip.SetTrigger("PlayCylinders");
-            Debug.Log("played animation");
-        }
+        
         //this is unitys input system
         //horizontal is mapped to the left and right arrow keys and a/d
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -149,21 +133,7 @@ public class PlayerMovement : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0, 0);
     }
 
-    private void SpawnObjects()
-    {
-        //this is simple instantiation
-        //Instantiate(spherePrefab, new Vector3(2, 3, 1), Quaternion.identity);
-
-        //first we make a variable called i and we set it to 0
-        //if i is less than the number of obstacles then 
-        // instantiate or do whatever is inside the brackets
-        //i + 1 = i++, i continues to count up until it hits 10 then it stops
-        for (int i = 0; i < numberOfObstacles; i++)
-        {
-            Vector3 position = new Vector3(i * spacing, 1.5f, 0);
-            Instantiate(spherePrefab, position, Quaternion.identity);
-        }
-    }
+    
 
     //two objects hit each other in unity
     //unity then makes a report and tells you what obj you hit
@@ -192,12 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("sfx1"))
-        {
-            Debug.Log("hit sfx trigger");
-            _SFX.Play();
-            Debug.Log("play audio");
-        }
+        
 
         Debug.Log("I Triggered: " + other.gameObject.name);
 
@@ -205,16 +170,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Trigger"))
         {
             Debug.Log("found trigger");
-            SpawnObjects();
+            //SpawnObjects();
             //we first accessed the script then we called the function
             scoreScript.AddScore(1);
         }
 
-        if (other.CompareTag("PlayAnimation"))
-        {
-            _animationClip.SetTrigger("PlayCylinders");
-            Debug.Log("triggered animation");
-        }
+       
     }
 
     //we call this function if our player falls
@@ -224,6 +185,7 @@ public class PlayerMovement : MonoBehaviour
         //the script is on the player so its the position of the player
         //we are setting the players position to the respawn position
         transform.position = respawnPoint.position;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 }

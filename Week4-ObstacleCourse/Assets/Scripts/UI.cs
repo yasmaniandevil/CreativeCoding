@@ -5,7 +5,7 @@ public class UI : MonoBehaviour
 {
     //we have to give it the image we want it to turn on and off
     public GameObject image;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
