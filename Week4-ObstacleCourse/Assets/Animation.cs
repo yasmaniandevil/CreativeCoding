@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Animation : MonoBehaviour
@@ -5,6 +6,8 @@ public class Animation : MonoBehaviour
     private Animator _animationClip;
     public GameObject animationObj;
     public string animationTrigger;
+    
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +22,10 @@ public class Animation : MonoBehaviour
         {
             _animationClip.SetTrigger(animationTrigger);
             Debug.Log("played animation");
+            
+            
+            
+            
         }
     }
 
@@ -30,4 +37,6 @@ public class Animation : MonoBehaviour
             Debug.Log("triggered animation");
         }
     }
+
+    
 }
