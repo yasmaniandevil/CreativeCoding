@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Week2n3 - Still Life/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Week4/Week4.unity
+    guid: cc8db298aed3144f19532cb15bb5d2ee
   - enabled: 1
-    path: Assets/Week5 - UI/UI-week4.unity
-    guid: 8654a62a42ea2418c9657ef9a3ceb226
+    path: Assets/testScene.unity
+    guid: 89b66ccd7bc4447b28eeed6b3d84a42d
   m_configObjects: {}

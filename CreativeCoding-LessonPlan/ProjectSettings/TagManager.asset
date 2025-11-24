@@ -7,6 +7,8 @@ TagManager:
   - Obstacle
   - Trigger
   - audio
+  - Interactable
+  - ChangeScene
   layers:
   - Default
   - TransparentFX

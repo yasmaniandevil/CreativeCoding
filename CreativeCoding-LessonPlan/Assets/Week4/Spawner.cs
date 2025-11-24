@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
 
             //instantiates random prefab at random position
             Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
-            Debug.Log("spawn list of objs");
+            //Debug.Log("spawn list of objs");
         }
     }
 }

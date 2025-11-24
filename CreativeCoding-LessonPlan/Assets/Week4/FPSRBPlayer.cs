@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FPSRBPlayer : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class FPSRBPlayer : MonoBehaviour
 
     public AudioSource _audio;
     bool hasPlayed = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -92,6 +94,8 @@ public class FPSRBPlayer : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        
+        
     }
 
     private void CameraLook()
@@ -202,6 +206,8 @@ public class FPSRBPlayer : MonoBehaviour
             }
         }
     }
+
+   
 
 
 }
