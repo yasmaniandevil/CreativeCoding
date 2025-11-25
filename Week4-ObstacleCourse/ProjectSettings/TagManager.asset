@@ -8,6 +8,8 @@ TagManager:
   - sfx1
   - Ground
   - PlayAnimation
+  - Interactable
+  - ChangeScene
   layers:
   - Default
   - TransparentFX
