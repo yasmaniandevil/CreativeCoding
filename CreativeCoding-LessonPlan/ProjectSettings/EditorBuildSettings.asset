@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/testScene.unity
     guid: 89b66ccd7bc4447b28eeed6b3d84a42d
+  - enabled: 1
+    path: Assets/FallScene.unity
+    guid: 9db53ffc36644437c823c63752d6b70c
+  - enabled: 1
+    path: Assets/SpringScene.unity
+    guid: 3543f7bddbecc43c588b7accc2421d1d
   m_configObjects: {}

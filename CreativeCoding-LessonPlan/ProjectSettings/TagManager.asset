@@ -9,6 +9,10 @@ TagManager:
   - audio
   - Interactable
   - ChangeScene
+  - SpringCube
+  - SummerCube
+  - FallCube
+  - WinterCube
   layers:
   - Default
   - TransparentFX

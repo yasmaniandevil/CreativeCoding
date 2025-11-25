@@ -364,7 +364,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd75bab734d5244b88ea800b69d7a336, type: 3}
---- !u!1001 &813818870
+--- !u!1001 &764712667
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -482,11 +482,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2350c4343e57244cc92fb8f8dbf598c0, type: 3}
---- !u!114 &999091574 stripped
+--- !u!114 &764712668 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4426723903951335950, guid: 2350c4343e57244cc92fb8f8dbf598c0,
     type: 3}
-  m_PrefabInstance: {fileID: 813818870}
+  m_PrefabInstance: {fileID: 764712667}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -511,7 +511,7 @@ PrefabInstance:
         type: 3}
       propertyPath: reticle
       value: 
-      objectReference: {fileID: 999091574}
+      objectReference: {fileID: 764712668}
     - target: {fileID: 6785972196679919927, guid: 96d333b9a44ba4eec9265213dfb4278c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -767,7 +767,7 @@ GameObject:
   - component: {fileID: 2041163986}
   m_Layer: 0
   m_Name: Trigger
-  m_TagString: FallCube
+  m_TagString: SpringCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,4 +869,4 @@ SceneRoots:
   - {fileID: 106712504}
   - {fileID: 2041163989}
   - {fileID: 1593316599}
-  - {fileID: 813818870}
+  - {fileID: 764712667}
